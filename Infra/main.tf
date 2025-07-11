@@ -150,3 +150,9 @@
 #   key_vault_name      = "kulvinderkey1"
 #   resource_group_name = "rgtest1"
 # }
+
+module "rgtodo2" {
+  source                  = "../child/rg"
+  resource_group_name     = "rgtest2"
+  resource_group_location = "East US"
+}

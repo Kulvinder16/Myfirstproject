@@ -3,12 +3,18 @@ module "rgtodo1" {
   resource_group_name     = "rgtest1"
   resource_group_location = "Central India"
 }
+  
+module "rgtodo2" {
+  source                  = "../child/rg"
+  resource_group_name     = "rgtest2"
+  resource_group_location = "Central Europe"
+}
 
 module "rgtodo1" {
   source                  = "../child/rg"
   resource_group_name     = "rgtest3"
   resource_group_location = "Canada Central"
-}
+}  
 
 module "vnet1" {
   depends_on              = [module.rgtodo1]
@@ -155,4 +161,10 @@ module "secret_password_vm" {
   secret_value        = "VMP@ssw0rd1234!"
   key_vault_name      = "kulvinderkey1"
   resource_group_name = "rgtest1"
+}
+
+module "rgtodo2" {
+  source                  = "../child/rg"
+  resource_group_name     = "rgtest2"
+  resource_group_location = "East US"
 }

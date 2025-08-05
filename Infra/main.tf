@@ -4,6 +4,12 @@ module "rgtodo1" {
   resource_group_location = "Central India"
 }
 
+module "rgtodo2" {
+  source                  = "../child/rg"
+  resource_group_name     = "rgtest2"
+  resource_group_location = "Central Europe"
+}
+
 module "vnet1" {
   depends_on              = [module.rgtodo1]
   source                  = "../child/v_net"
